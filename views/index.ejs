@@ -1,0 +1,43 @@
+<%- include('header.ejs') %>
+
+    <div id="main">
+        <form class="searchSec" action="/add" method="post">
+            <input name="Input" type="text" required placeholder="Type something...">
+            <button type="submit">+</button>
+        </form>
+
+        <div id="listSec">
+            <% if (locals.list) { %>
+                <% list.forEach(e=> { %>
+                    <div class="list">
+                        <form class="form<%= e.id %>" action="/delete" method="post">
+                            <input type="checkbox" onclick="this.form.submit()" name="dltItem" value="<%= e.id %>">
+                        </form>
+                        <p class="form<%= e.id %>">
+                            <%= e.title %>
+                        </p>
+                        <form id="edit" class="edit<%= e.id %>" action="/edit" method="post" style="display: none;">
+                            <input type="hidden" name="id" value="<%= e.id %>">
+                            <input type="text" name="title" value="<%= e.title %>">
+                            <button>✔️</button>
+                        </form>
+                        <button class="form<%= e.id %>" onclick="handler('<%= e.id %>')">✏️</button>
+
+                    </div>
+                    <% }) %>
+                        <% } %>
+        </div>
+    </div>
+    <script>
+        function handler(e) {
+            document.querySelectorAll(`.form${e}`)[0].setAttribute("hidden", true)
+            document.querySelectorAll(`.form${e}`)[1].setAttribute("hidden", true)
+            document.querySelectorAll(`.form${e}`)[2].setAttribute("hidden", true)
+            document.querySelector(`.edit${e}`).style.display = 'block';
+
+        }
+
+
+    </script>
+
+    <%- include('footer.ejs') %>
