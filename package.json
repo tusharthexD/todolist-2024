@@ -1,7 +1,6 @@
 {
   "name": "new-todo-list",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -18,5 +17,7 @@
     "npm": "^10.3.0",
     "pg": "^8.11.3",
     "pg-pool": "^3.6.1"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

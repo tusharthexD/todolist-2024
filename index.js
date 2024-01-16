@@ -2,20 +2,22 @@ import bodyParser from "body-parser";
 import express from "express";
 import pg from "pg";
 import dotenv from "dotenv";
+dotenv.config();
 
 const { Pool } = pg;
 
 const app = express();
 const port = 3000;
+console.log(process.env.DB_URL);
 
-const connectionString = process.env.DB_URL
+const connectionString = process.env.DB_URL;
 
 const db = new Pool({
   connectionString: connectionString,
   // If you're using a service like Heroku, you might need this for SSL:
   ssl: {
-    rejectUnauthorized: false
-  }
+    rejectUnauthorized: false,
+  },
 });
 db.connect();
 
@@ -42,11 +44,11 @@ app.post("/delete", async (req, res) => {
   res.redirect("/");
 });
 
-app.post('/edit', async(req,res)=>{
-  let {id,title} = req.body
-await db.query('UPDATE todolist SET title = $1 WHERE id = $2', [title,id])
-  res.redirect('/')
-})
+app.post("/edit", async (req, res) => {
+  let { id, title } = req.body;
+  await db.query("UPDATE todolist SET title = $1 WHERE id = $2", [title, id]);
+  res.redirect("/");
+});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
 });
