@@ -1,15 +1,12 @@
 import bodyParser from "body-parser";
 import express from "express";
 import pg from "pg";
-import dotenv from "dotenv";
-dotenv.config();
-
 const { Pool } = pg;
 
 const app = express();
 const port = 3000;
 
-const connectionString = process.env.DB_URL;
+const connectionString = "postgres://todolist:ws5rj1VxTfVEhwIuk7cNRfMMYi56Iopp@dpg-cmhui2f109ks739hpkqg-a.singapore-postgres.render.com/todolist_mth3";
 
 const db = new Pool({
   connectionString: connectionString,
