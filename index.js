@@ -10,7 +10,7 @@ const db = new pg.Client({
   password: "ws5rj1VxTfVEhwIuk7cNRfMMYi56Iopp",
   port: 5432,
   database: "todolist_mth3",
-  host: "dpg-cmhui2f109ks739hpkqg-a",
+  host: "dpg-cmhui2f109ks739hpkqg-a.singapore-postgres.render.com",
 });
 
 db.connect();
