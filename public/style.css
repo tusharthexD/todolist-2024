@@ -10,11 +10,10 @@ body{
 }
 
 #main{
-    width: 95%;
+    margin: 400px 10px;
     max-width: 400px;
     min-height: 500px;
     border: 2px solid black;
-    margin-top: 100px;
     border-radius: 20px;
     overflow: hidden;
     background-color: #FFCF81;
