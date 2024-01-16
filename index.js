@@ -1,18 +1,23 @@
 import bodyParser from "body-parser";
 import express from "express";
 import pg from "pg";
+import dotenv from "dotenv";
+
+const { Pool } = pg;
 
 const app = express();
 const port = 3000;
 
-const db = new pg.Client({
-  user: "postgres",
-  password: "Tushar@work",
-  port: 5432,
-  database: "todolist",
-  host: "localhost",
-});
+const connectionString = process.env.DB_URL
 
+
+const db = new Pool({
+  connectionString: connectionString,
+  // If you're using a service like Heroku, you might need this for SSL:
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 db.connect();
 
 app.use(express.static("public/"));
