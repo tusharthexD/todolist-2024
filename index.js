@@ -8,7 +8,6 @@ const { Pool } = pg;
 
 const app = express();
 const port = 3000;
-console.log(process.env.DB_URL);
 
 const connectionString = process.env.DB_URL;
 
