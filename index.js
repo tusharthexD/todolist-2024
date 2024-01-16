@@ -1,13 +1,15 @@
 import bodyParser from "body-parser";
 import express from "express";
 import pg from "pg";
+import dotenv from "dotenv";
+
 const { Pool } = pg;
+dotenv.config();
 
 const app = express();
 const port = 3000;
 
-const connectionString = "postgres://todolist:ws5rj1VxTfVEhwIuk7cNRfMMYi56Iopp@dpg-cmhui2f109ks739hpkqg-a.singapore-postgres.render.com/todolist_mth3";
-
+const connectionString = process.env.DB_URL;
 const db = new Pool({
   connectionString: connectionString,
   // If you're using a service like Heroku, you might need this for SSL:
